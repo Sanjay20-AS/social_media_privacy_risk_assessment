@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Synthetic Demo Profiles{% endblock %}
+{% block content %}
+<h1>Synthetic Demo Profiles</h1>
+<p>These fictional profiles exist only to demonstrate how the scoring engine behaves. They are not based on real people.</p>
+<div class="grid">
+{% for p in profiles %}
+<div class="profile-card">
+  <span class="eyebrow">{{ p.id }}</span>
+  <h2>{{ p.name }}</h2>
+  <p>{{ p.description }}</p>
+  <form method="post" action="{{ url_for('demo_assess', profile_id=p.id) }}">
+    <button class="primary" type="submit">Assess Synthetic Profile</button>
+  </form>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

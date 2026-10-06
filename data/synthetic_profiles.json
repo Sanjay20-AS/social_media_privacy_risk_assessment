@@ -1,0 +1,35 @@
+[
+  {
+    "id": "synthetic-low",
+    "name": "Alex Example",
+    "description": "Fictional privacy-conscious student profile with restrictive sharing and strong authentication.",
+    "answers": {
+      "profile_visibility":"no","personal_info":"no","contact_info":"no","location":"no","work_education":"no",
+      "birthday":"no","family_relationships":"no","post_visibility":"no","connection_controls":"no","tagging":"no",
+      "third_party_apps":"no","authentication":"yes","mfa":"yes","password_reuse":"no","login_alerts":"yes",
+      "unknown_requests":"no","suspicious_links":"no","photo_metadata":"yes","historical_posts":"yes","social_engineering":"no"
+    }
+  },
+  {
+    "id": "synthetic-high",
+    "name": "Taylor Demo",
+    "description": "Fictional profile with broad public sharing, weak account controls, and high social-engineering exposure.",
+    "answers": {
+      "profile_visibility":"yes","personal_info":"yes","contact_info":"yes","location":"yes","work_education":"yes",
+      "birthday":"yes","family_relationships":"yes","post_visibility":"yes","connection_controls":"yes","tagging":"yes",
+      "third_party_apps":"yes","authentication":"no","mfa":"no","password_reuse":"yes","login_alerts":"no",
+      "unknown_requests":"yes","suspicious_links":"yes","photo_metadata":"no","historical_posts":"no","social_engineering":"yes"
+    }
+  },
+  {
+    "id": "synthetic-moderate",
+    "name": "Jordan Sample",
+    "description": "Fictional mixed-security profile intended to demonstrate a moderate assessment.",
+    "answers": {
+      "profile_visibility":"no","personal_info":"unknown","contact_info":"no","location":"yes","work_education":"no",
+      "birthday":"unknown","family_relationships":"no","post_visibility":"unknown","connection_controls":"no","tagging":"unknown",
+      "third_party_apps":"unknown","authentication":"yes","mfa":"no","password_reuse":"no","login_alerts":"yes",
+      "unknown_requests":"no","suspicious_links":"unknown","photo_metadata":"unknown","historical_posts":"no","social_engineering":"unknown"
+    }
+  }
+]

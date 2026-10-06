@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Results{% endblock %}
+{% block content %}
+<section class="result-hero">
+  <span class="eyebrow">ASSESSMENT RESULT</span>
+  <h1>Your Privacy Risk Score</h1>
+  <div class="score">{{ result.score }}<small>/100</small></div>
+  <div class="level level-{{ result.level|lower }}">{{ result.level }}</div>
+  <p>Higher scores indicate higher estimated privacy/security exposure under this educational framework.</p>
+  <a class="secondary" href="{{ url_for('report') }}">Download PDF Report</a>
+</section>
+
+<section class="grid">
+{% for category, score in result.category_scores.items() %}
+  <div class="metric">
+    <h3>{{ category }}</h3>
+    <div class="bar"><span style="width: {{ score }}%"></span></div>
+    <strong>{{ score }}/100</strong>
+  </div>
+{% endfor %}
+</section>
+
+<section class="panel">
+<h2>Detected Privacy Weaknesses</h2>
+{% if result.weaknesses %}
+<ul class="recommendations">
+{% for w in result.weaknesses %}
+<li><strong>{{ w.control }}</strong>: {{ w.message }}</li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No high-impact weaknesses were detected by this rule set.</p>
+{% endif %}
+</section>
+
+<section class="panel">
+<h2>Personalized Recommendations</h2>
+<ul class="recommendations">
+{% for rec in result.recommendations %}
+<li>{{ rec }}</li>
+{% endfor %}
+</ul>
+</section>
+
+<section class="panel">
+<h2>Privacy Checklist</h2>
+{% for title, detail in result.checklist %}
+<div class="check"><span>□</span><div><strong>{{ title }}</strong><br><small>{{ detail }}</small></div></div>
+{% endfor %}
+</section>
+
+<section class="disclaimer">
+<strong>Important:</strong> This is an educational risk framework, not a compromise detector or security guarantee. It does not access, scan, scrape, enumerate, identify, or track real people/accounts.
+</section>
+{% endblock %}

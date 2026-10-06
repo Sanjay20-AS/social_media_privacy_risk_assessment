@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Assessment{% endblock %}
+{% block content %}
+<section class="hero">
+  <span class="eyebrow">DEFENSIVE PRIVACY ANALYTICS</span>
+  <h1>Social Media Privacy Risk Assessment Framework</h1>
+  <p>Evaluate your own voluntarily provided privacy settings and security habits using a transparent rule-based model. Nothing is collected from real social-media platforms.</p>
+  <div class="notice"><strong>Privacy by design:</strong> Do not enter passwords, private messages, real account identifiers, government IDs, or sensitive information about another person.</div>
+</section>
+
+<form method="post" action="{{ url_for('assess') }}">
+{% for q in questions %}
+  <section class="question-card">
+    <div class="category">{{ q.category }}</div>
+    <h2>{{ loop.index }}. {{ q.question }}</h2>
+    <div class="options">
+      {% for value, label in q.options %}
+      <label><input type="radio" name="{{ q.id }}" value="{{ value }}" {% if loop.first %}required{% endif %}> <span>{{ label }}</span></label>
+      {% endfor %}
+    </div>
+  </section>
+{% endfor %}
+<button class="primary" type="submit">Calculate Privacy Risk</button>
+</form>
+{% endblock %}
